@@ -61,7 +61,7 @@ class GoogleImageUrl:
 
             with Image.open(BytesIO(response.content)) as img:
                  print('ok')
-                 break
+                 # break
 
 
         except requests.exceptions.ReadTimeout:
