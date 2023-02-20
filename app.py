@@ -11,7 +11,8 @@ from linebot.models import *
 import sys
 import os
 import configparser
-
+import sys
+sys.setrecursionlimit(2000)
 
 # Add the directory containing your module to the Python path (wants absolute paths)
 scriptpath = '/app'
