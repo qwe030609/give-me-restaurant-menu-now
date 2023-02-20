@@ -5,4 +5,4 @@ selenium==3.8.0
 bs4
 Pillow>=2.1
 eventlet
-git+https://github.com/Joeclinton1/google-images-download.git
+git+https://github.com/qwe030609/google-images-download-bugfix.git
