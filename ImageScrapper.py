@@ -46,37 +46,37 @@ class GoogleImageUrl:
         image_url_list_clean = image_url_list.copy()
         session = requests.Session()        # for faster request 
         
-        for i in range(search_pic_count):
+        # for i in range(search_pic_count):
         
-            # 隨機生成一整數，做為選取圖片url的index
-            url_random_index = random.randint(0, len(image_url_list_clean) - 1)
+        # 隨機生成一整數，做為選取圖片url的index
+        url_random_index = random.randint(0, len(image_url_list_clean) - 1)
 
-            # 隨機選取一圖片的url
-            ImgUrl = image_url_list_clean[url_random_index]
-            
-            try:
-                with eventlet.timeout.Timeout(0.5):
-                    response = session.get(ImgUrl)
-                    # response = requests.get(image_url)
-            
-                with Image.open(BytesIO(response.content)) as img:
-                     print('ok')
-                     break
-            
-            
-            except requests.exceptions.ReadTimeout:
-                print("READ TIMED OUT -", ImgUrl)
-            except requests.exceptions.ConnectionError:
-                print("CONNECT ERROR -", ImgUrl)
-            except eventlet.timeout.Timeout as e:
-                print("TOTAL TIMEOUT -", ImgUrl)
-            except requests.exceptions.RequestException as e:
-                print("OTHER REQUESTS EXCEPTION -", ImgUrl, e)
-            
-            except:
-                print(ImgUrl)
-                print('Image Corrupted')
-                image_url_list_clean.remove(ImgUrl)
+        # 隨機選取一圖片的url
+        ImgUrl = image_url_list_clean[url_random_index]
+
+        try:
+            with eventlet.timeout.Timeout(0.5):
+                response = session.get(ImgUrl)
+                # response = requests.get(image_url)
+
+            with Image.open(BytesIO(response.content)) as img:
+                 print('ok')
+                 break
+
+
+        except requests.exceptions.ReadTimeout:
+            print("READ TIMED OUT -", ImgUrl)
+        except requests.exceptions.ConnectionError:
+            print("CONNECT ERROR -", ImgUrl)
+        except eventlet.timeout.Timeout as e:
+            print("TOTAL TIMEOUT -", ImgUrl)
+        except requests.exceptions.RequestException as e:
+            print("OTHER REQUESTS EXCEPTION -", ImgUrl, e)
+
+        except:
+            print(ImgUrl)
+            print('Image Corrupted')
+            image_url_list_clean.remove(ImgUrl)
         
         # save Image URLs to log
         if os.path.exists('Image urls result.txt'):
