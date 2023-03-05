@@ -15,7 +15,7 @@ from google_images_download import google_images_download
 from PIL import Image
 import requests
 import eventlet
-eventlet.monkey_patch()
+# eventlet.monkey_patch()
 from io import BytesIO
 import urllib.request
 #location_driver = 'C:\\ProgramData\\Anaconda3\\chromedriver' # Chrome驱动程序在电脑中的位置
